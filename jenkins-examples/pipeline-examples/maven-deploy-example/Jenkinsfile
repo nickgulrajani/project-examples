@@ -8,7 +8,8 @@ node {
     }
  
     stage ('Artifactory configuration') {
-        // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+        
+        script {
         server = Artifactory.server 'Jfrog'
 
         rtMaven = Artifactory.newMavenBuild()
@@ -18,6 +19,11 @@ node {
         rtMaven.deployer.deployArtifacts = false // Disable artifacts deployment during Maven run
 
         buildInfo = Artifactory.newBuildInfo()
+        
+       
+        }
+        
+        
     }
  
     stage ('Test') {

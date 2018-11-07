@@ -12,7 +12,7 @@ node {
         script {
             server = Artifactory.server 'Jfrog'
 
-            def rtMaven = Artifactory.newMavenBuild()
+            rtMaven = Artifactory.newMavenBuild()
             
             rtMaven.tool = 'Maven' // Tool name from Jenkins configuration
             rtMaven.deployer releaseRepo: 'example-repo-local', snapshotRepo: 'example-repo-local', server

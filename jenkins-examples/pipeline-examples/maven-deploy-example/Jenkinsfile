@@ -6,6 +6,17 @@ node {
     stage ('Clone') {
         git url: 'https://github.com/nickgulrajani/project-examples.git'
     }
+    
+    stage('SonarQube Code analysis') {
+            
+              script {
+		    def scannerHome = tool 'Sonar';
+                    withSonarQubeEnv('Sonar7') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+              }
+            
+    }
  
     stage ('Artifactory configuration') {
         

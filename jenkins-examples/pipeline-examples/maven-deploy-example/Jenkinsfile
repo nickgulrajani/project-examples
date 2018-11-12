@@ -10,7 +10,7 @@ node {
     stage('SonarQube Code analysis') {
             
               script {
-                    withSonarQubeEnv('Sonar 7') {
+                    withSonarQubeEnv('Sonar7') {
 			def sonarHome = tool 'Sonar'
                         sh '${sonarHome}/bin/sonar-scanner -D sonar-project.properties'
                     }

@@ -8,14 +8,14 @@ node {
     }
     
     stage('SonarQube Code analysis') {
-            steps {
+            
               script {
                     withSonarQubeEnv('Sonar 7') {
 			def sonarHome = tool 'Sonar'
                         sh '${sonarHome}/bin/sonar-scanner -D sonar-project.properties'
                     }
               }
-            }
+            
     }
  
     stage ('Artifactory configuration') {

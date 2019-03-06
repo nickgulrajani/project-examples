@@ -1,24 +1,24 @@
 node {
-    def server = Artifactory.newServer url:'http://ec2-18-214-36-186.compute-1.amazonaws.com:8084/artifactory'
-    def rtMaven = Artifactory.newMavenBuild()
+    // def server = Artifactory.newServer url:'http://ec2-18-214-36-186.compute-1.amazonaws.com:8084/artifactory'
+    // def rtMaven = Artifactory.newMavenBuild()
     def buildInfo
 
     stage ('Clone') {
         git url: 'https://github.com/nickgulrajani/project-examples.git'
     }
 
-    stage ('Artifactory configuration') {
-        rtMaven.tool = 'Maven' // Tool name from Jenkins configuration
-        rtMaven.deployer releaseRepo: 'example-repo-local', snapshotRepo: 'example-snapshot-local', server: server
-        rtMaven.resolver releaseRepo: 'example-repo', snapshotRepo: 'example-snapshot', server: server
-        buildInfo = Artifactory.newBuildInfo()
-    }
+  //  stage ('Artifactory configuration') {
+     //   rtMaven.tool = 'Maven' // Tool name from Jenkins configuration
+      //  rtMaven.deployer releaseRepo: 'example-repo-local', snapshotRepo: 'example-snapshot-local', server: server
+       //  rtMaven.resolver releaseRepo: 'example-repo', snapshotRepo: 'example-snapshot', server: server
+       // buildInfo = Artifactory.newBuildInfo()
+   // }
 
     stage ('Exec Maven') {
         rtMaven.run pom: 'maven-example/pom.xml', goals: 'clean install', buildInfo: buildInfo
     }
 
-    stage ('Publish build info') {
-        server.publishBuildInfo buildInfo
-    }
+    //stage ('Publish build info') {
+      //  server.publishBuildInfo buildInfo
+   // }
 }

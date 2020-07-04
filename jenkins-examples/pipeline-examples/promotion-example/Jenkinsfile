@@ -3,6 +3,15 @@ node {
     git url: 'https://github.com/nickgulrajani/project-examples.git'
 
     // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+
+
+    rtServer (
+    id: 'jfrog',
+    url: 'http://ec2-54-188-187-183.us-west-2.compute.amazonaws.com:8082/artifactory ',
+    // If you're using username and password:
+    username: 'admin',
+    password: 'changeme'
+)
     def server = jfrog 
 
     // Create the upload spec.

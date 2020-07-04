@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    env {
+    environment {
 
     SERVER_ID = 'jfrog'
 }

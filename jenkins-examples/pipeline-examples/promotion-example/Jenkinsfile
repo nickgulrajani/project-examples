@@ -4,7 +4,6 @@ node {
 
     // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
 
-
     rtServer (
     id: 'jfrog',
     url: 'http://ec2-54-188-187-183.us-west-2.compute.amazonaws.com:8082/artifactory ',
@@ -12,7 +11,6 @@ node {
     username: 'admin',
     password: 'changeme'
 )
-    def server = jfrog 
 
     // Create the upload spec.
     def uploadSpec = readFile 'jenkins-examples/pipeline-examples/resources/props-upload.json'
